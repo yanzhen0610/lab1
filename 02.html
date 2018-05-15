@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>塔羅牌</title>
+  <link rel="stylesheet" href="./css/common.css">
+
+  <script>
+    function new_card_elem(name, img) {
+      return $(
+        '<div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 p-2 pointer">' +
+        '  <a href="#">' +
+        '    <div class="pt-3 pb-3 pl-2 pr-2 text-white bg-color1">' +
+        '      <p>' + name + '</p>' +
+        '      <img class="card-img img-fluid" src="' + img + '">' +
+        '    </div>' +
+        '  </a>' +
+        '</div>'
+      );
+    }
+
+    function change_card_info(data, index) {
+      $('#name').text(data[index]['name']);
+      $('#card-img').attr('src', data[index]['img']);
+      if ('description' in data[index] && data[index]['description'] != "") {
+        $('#description').text(data[index]['description']);
+        $('#description-wrapper').css('display', '');
+      } else {
+        $('#description-wrapper').css('display', 'none');
+      }
+      $('#field1').text(data[index]['field1']);
+      $('#field2').text(data[index]['field2']);
+      $('#field3').text(data[index]['field3']);
+      $('#field4').text(data[index]['field4']);
+    }
+
+    $(function() {
+      $('#js-warning').remove();
+
+      $.getJSON('./data/cards.json', function(data) {
+        data.forEach(function(elem, index) {
+          var elem = new_card_elem(elem.name, elem.img);
+          $(elem).click(function() {
+            change_card_info(data, index);
+          });
+          $('#cards-container').append(elem);
+        });
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var id = urlParams.get('id');
+        if (id == undefined) id = 0;
+        change_card_info(data, id);
+
+      });
+    });
+  </script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-color1">
+    <a class="navbar-brand text-white" href="#">塔羅牌</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="./index.html">首頁<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="./01.html">塔羅牌介紹</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="./02.html">塔羅牌一覽</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="./03.html">嘗試一下</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="./04.html">其他連結</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <div class="container mb-3">
+    <h1 class="text-white mt-4 mb-3" align="center">塔羅牌一覽</h1>
+
+    <div class="mt-3 bg-color1">
+
+      <h1 id="js-warning">Your browser doesn't support javascript.</h1>
+
+      <div class="p-1 pt-3 row justify-content-md-center">
+        <div class="col-sm-5 col-xs-12 p-2">
+          <div class="pt-3 pb-3 pl-2 pr-2 text-white bg-color1">
+            <h2 id="name">1號：魔術師</h2>
+            <img id="card-img" class="card-img img-fluid" src="08.jpg">
+          </div>
+        </div>
+      </div>
+
+      <div id="description-wrapper" class="pl-3 pr-3 row justify-content-md-center">
+        <div class="col-sm-8 col-xs-12 p-2">
+          <div class="pt-3 pb-3 pl-2 pr-2 text-white bg-color1">
+            <p id="description">零有可能是一切的開始 也有可能是一切的終焉</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pl-3 pr-3 row justify-content-md-center">
+
+        <div class="col-sm-6 col-xs-12 p-2">
+          <div class="pt-3 pb-3 pl-2 pr-2 text-white bg-color1">
+            <h2 id="field1">正位:</h2>
+            <p id="field2">放下所有世俗的規矩，盡情的出走環境帶來的束縛，想要自由與規劃自己的人生，卻有種狂放不羈的感覺。</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-xs-12 p-2">
+          <div class="pt-3 pb-3 pl-2 pr-2 text-white bg-color1">
+            <h2 id="field3">逆位:</h2>
+            <p id="field4">活在自己的世界，卻不太聽取旁人的警告，行事愚昧、個性譁眾取寵，玩心重。</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="bg-color1 mt-3">
+      <div id="cards-container" class="p-3 row justify-content-center">
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

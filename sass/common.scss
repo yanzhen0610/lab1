@@ -1,0 +1,41 @@
+$base-fonts: 'Source Sans Pro', sans-serif, 'PingFang TC', 'Lantinghei TC', 'Microsoft YaHei', 'Noto Sans TC';
+
+$bg-img: '../01.jpg';
+$bg-color: rgba(153, 102, 0, 0.5);
+
+@mixin background() {
+  background-image: url($bg-img);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin transition($time-fn: ease, $time: 320ms) {
+  -webkit-transition: $time-fn $time;
+  -moz-transition: $time-fn $time;
+  -ms-transition: $time-fn $time;
+  -o-transition: $time-fn $time;
+  transition: $time-fn $time;
+}
+
+body {
+  @include background();
+  font-family: $base-fonts;
+}
+
+.bg-color1 {
+  background-color: $bg-color;
+}
+
+.card-img {
+  border-radius: 3%;
+}
+
+.tran1 {
+  @include transition();
+}
+
+.pointer {
+  cursor: pointer;
+}

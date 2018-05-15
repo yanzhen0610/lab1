@@ -1,0 +1,25 @@
+body {
+  background-image: url("../01.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  font-family: "Source Sans Pro", sans-serif, "PingFang TC", "Lantinghei TC", "Microsoft YaHei", "Noto Sans TC"; }
+
+.bg-color1 {
+  background-color: rgba(153, 102, 0, 0.5); }
+
+.card-img {
+  border-radius: 3%; }
+
+.tran1 {
+  -webkit-transition: ease 320ms;
+  -moz-transition: ease 320ms;
+  -ms-transition: ease 320ms;
+  -o-transition: ease 320ms;
+  transition: ease 320ms; }
+
+.pointer {
+  cursor: pointer; }
+
+/*# sourceMappingURL=common.css.map */
