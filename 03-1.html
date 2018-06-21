@@ -53,7 +53,7 @@
                 $(function(){
                   id = Math.floor(Math.random() * 22+2);
                   $.getJSON('./data/cards.json', function(data) {
-                    imgUrl = data[id]['card-img'];
+                    imgUrl = data[id]['img'];
                     document.write('<img src="' + imgUrl + '.jpg" alt="" />');
                     $('#card-info-link').attr('href', '02.html?id=' + id);
                   });
