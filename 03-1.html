@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,23 +47,19 @@
     <div class="col-lg-3 col-md-6 col-xs-12 p-2">
 
               <script type="text/javascript">
-                id = Math.floor(Math.random() * 22+2);
-//                 document.write('<img src="' +id+ '.jpg" alt="" />');
                 $(function(){
-                  id = Math.floor(Math.random() * 22+2);
                   $.getJSON('./data/cards.json', function(data) {
+                    id = Math.floor(Math.random() * 22+2);
                     imgUrl = data[id]['img'];
-//                     document.write('<img src="' + imgUrl + '" alt="" />');
                     $('#card-img').attr('src', imgUrl);
                     $('#card-info-link').attr('href', '02.html?id=' + id);
-//                     $('#card-info-link').prepend('<img src="' + imgUrl + '" alt="" />');
                   });
                 });
               </script>
               
               <a id='card-info-link' class="nav-link" href="02.html" style="color: black">
                 <img id='card-img' src=''>
-                查一下牌的義意吧
+                <p>查一下牌的義意吧</p>
               </a>
 
           
