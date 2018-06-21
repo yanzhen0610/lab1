@@ -55,14 +55,17 @@
                   $.getJSON('./data/cards.json', function(data) {
                     imgUrl = data[id]['img'];
 //                     document.write('<img src="' + imgUrl + '" alt="" />');
-//                     $('card-img').attr('src', imgUrl);
-                    $('#card-info-link').attr('href', '02.html?id=' + id);
+                    $('#card-img').attr('src', imgUrl);
+//                     $('#card-info-link').attr('href', '02.html?id=' + id);
                     $('#card-info-link').prepend('<img src="' + imgUrl + '" alt="" />');
                   });
                 });
               </script>
-              <img id='card-img' src='' />
-              <a id='card-info-link' class="nav-link" href="02.html" style="color: black">查一下牌的義意吧</a>
+              
+              <a id='card-info-link' class="nav-link" href="02.html" style="color: black">
+                <img id='card-img' src=''>
+                查一下牌的義意吧
+              </a>
 
           
         </div>
