@@ -54,11 +54,13 @@
                   id = Math.floor(Math.random() * 22+2);
                   $.getJSON('./data/cards.json', function(data) {
                     imgUrl = data[id]['img'];
-                    document.write('<img src="' + imgUrl + '" alt="" />');
+//                     document.write('<img src="' + imgUrl + '" alt="" />');
+                    $('card-img').attr('src', imgUrl);
                     $('#card-info-link').attr('href', '02.html?id=' + id);
                   });
                 });
               </script>
+              <img id='card-img' src='' />
               <a id='card-info-link' class="nav-link" href="02.html" style="color: black">查一下牌的義意吧</a>
 
           
